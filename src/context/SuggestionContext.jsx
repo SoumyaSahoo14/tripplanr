@@ -26,8 +26,15 @@ export const SuggestionProvider = ({children}) =>{
     const deleteSuggestion =(id)=>{
         setSuggestions(suggestions.filter(suggestion=> suggestion.id !== id));
     };
+    const editSuggestion=(upadtedSuggestion)=>{
+        setSuggestions((prevSuggestions)=>
+           prevSuggestions.map((s)=>
+              s.id === upadtedSuggestion.id ? upadtedSuggestion : s
+            )
+        );
+    };
     return(
-        <SuggestionContext.Provider value={{suggestions, addSuggestion,voteSuggestion, deleteSuggestion}}>
+        <SuggestionContext.Provider value={{suggestions, addSuggestion,voteSuggestion, deleteSuggestion, editSuggestion}}>
             {children}
         </SuggestionContext.Provider>
     );
