@@ -22,8 +22,12 @@ export const SuggestionProvider = ({children}) =>{
         );
         setSuggestions(upadtedSuggestions);
     };
+
+    const deleteSuggestion =(id)=>{
+        setSuggestions(suggestions.filter(suggestion=> suggestion.id !== id));
+    };
     return(
-        <SuggestionContext.Provider value={{suggestions, addSuggestion,voteSuggestion}}>
+        <SuggestionContext.Provider value={{suggestions, addSuggestion,voteSuggestion, deleteSuggestion}}>
             {children}
         </SuggestionContext.Provider>
     );

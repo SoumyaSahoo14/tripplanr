@@ -4,7 +4,7 @@ import VoteButton from './VoteButton';
 import styles from './SuggestionList.module.css';
 
 const SuggestionList = ()=>{
-    const {suggestions} = useContext(SuggestionContext);
+    const {suggestions, deleteSuggestion} = useContext(SuggestionContext);
 
     if(suggestions.length=== 0){
         return<p>No suggestions yet. Add one !</p>;
@@ -18,6 +18,7 @@ const SuggestionList = ()=>{
                     <li key={s.id}>
                         {s.name} - {s.votes} votes
                         <VoteButton suggestionId={s.id}/>
+                        <button onClick={()=> deleteSuggestion(s.id)}>Delete🚫</button>
                     </li>
                 ))}
             </ul>

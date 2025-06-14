@@ -6,6 +6,7 @@ import styles from './Home.module.css';
 import VoteButton from "../components/VoteButton";
 
 
+
 const Home= ()=>{
     return (
         <div style={{padding:'20px'}}>
