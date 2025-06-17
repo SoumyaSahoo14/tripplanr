@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import styles from './TripSelector.module.css'
 
 function generateTripCode(){
-    return "TRIP" + Math.floor(100000 + Math.random()* 900000);
+    return "ID" + Math.floor(10 + Math.random()* 90);
 }
 
 function TripSelector({onTripSelected}){
@@ -58,7 +58,9 @@ function TripSelector({onTripSelected}){
     };
 
     return(
-        <div style={{padding:"2rem"}}>
+        <div style={{padding:"2rem",
+            textAlign:'center',
+        }}>
             <h2>Start Planning Trip ✈️</h2>
             <button onClick={handleCreateTrip}>➕Create New Trip</button>
 

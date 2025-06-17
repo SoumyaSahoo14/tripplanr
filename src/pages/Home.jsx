@@ -10,8 +10,10 @@ import VoteButton from "../components/VoteButton";
 
 const Home= ()=>{
     return (
-        <div style={{padding:'20px'}}>
-        <h1>TripPlan</h1>
+        <div style={{padding:'20px',
+            textAlign:'center'
+        }}>
+        <h1>Plan a Trip</h1>
         <SuggestionForm/>
         <SuggestionList/>
         <Itinerary/>
