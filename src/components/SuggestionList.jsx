@@ -34,7 +34,7 @@ const SuggestionList = ({ onEdit})=>{
                 {s.name} - {s.votes} votes
                 <VoteButton suggestionId={s.id} />
                 <button onClick={() => deleteSuggestion(s.id)}>Delete 🚫</button>
-                <button onClick={() => setEditingId(s.id)}>Edit</button>
+                <button onClick={() => setEditingId(s.id)}>Edit✏️</button>
               </>
             )}
           </li>

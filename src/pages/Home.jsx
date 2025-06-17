@@ -14,7 +14,6 @@ const Home= ()=>{
         <SuggestionForm/>
         <SuggestionList/>
         <Itinerary/>
-        <VoteButton/>
         </div>
     );
 };
