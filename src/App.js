@@ -8,6 +8,7 @@ import TripHeader from './components/TripHeader.jsx';
 import { ThemeProvider,ThemeContext } from './context/ThemeContext.jsx';
 import themeStyles from './styles/themes.module.css';
 import ThemeToggle from'./components/ThemeToggle.jsx';
+import NavBar from './components/NavBar';
 
 
 function AppContent() {
@@ -37,7 +38,7 @@ function AppContent() {
   return (
       <div className={`${themeStyles[theme]} ${styles.container}`}>
         <ThemeToggle/>
-        <h1 className={styles.title}>TripPlanr 🧳</h1>
+        
         {!tripCode ? (
         <TripSelector onTripSelected={setTripCode} />
       ) : (
@@ -54,8 +55,13 @@ function AppContent() {
 }
 
 function App(){
+
+  const toggleTheme=()=>{
+    document.body.classList.toggle("dark-mode");
+  };
   return(
     <ThemeProvider>
+      <NavBar toggleTheme={toggleTheme}/>
       <AppContent/>
     </ThemeProvider>
   );
