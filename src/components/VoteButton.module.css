@@ -11,3 +11,128 @@
 .voteButton:hover {
   background-color: #059669;
 }
+/* .container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('/public/Group-bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.header {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.searchBar input {
+  flex: 1;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.tripGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tripCard {
+  background-color: ;
+  padding: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  transition: box-shadow 0.3s;
+}
+
+.tripCard:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.tripCard h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.tripCard p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: ;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.createBtn {
+  display: ;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #395d53;
+  color: #000000;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  transition: box-shadow 0.3s;
+  align-self: center;
+
+}
+
+.createBtn:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.joinGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.joinGroup input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #b6c624;
+}
+
+.joinGroup button {
+  background-color: #17c03b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.joinGroup button:hover {
+  background-color: #218838;
+} */

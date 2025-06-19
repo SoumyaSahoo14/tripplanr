@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from "react";
-import styles from './TripSelector.module.css'
+import styles from './TripSelector.module.css';
+import { motion } from "framer-motion";
+import { FaSearch, FaPlus, FaSuitcase } from "react-icons/fa";
 
 function generateTripCode(){
     return "ID" + Math.floor(10 + Math.random()* 90);
@@ -8,6 +10,7 @@ function generateTripCode(){
 function TripSelector({onTripSelected}){
     const[joinCode,setJoinCode]= useState("");
     const[existingTrips, setExistingTrips]=useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(()=>{
         loadTrips();
@@ -29,69 +32,75 @@ function TripSelector({onTripSelected}){
 
     const handleCreateTrip =()=>{
         const newCode = generateTripCode();
-        const name = prompt("Enter a name of the Trip:");
+        const name = prompt("Enter a name for your Trip:");
         if(!name) return;
 
         const tripData ={
             name,
             suggestions:[]
         };
-        localStorage.setItem(`tripplanr-${newCode}`,JSON.stringify(tripData));
+        localStorage.setItem("tripplanr-" + newCode, JSON.stringify(tripData));
+        loadTrips();
         onTripSelected(newCode);
     };
-
-    const handleJoinTrip =()=>{
-        if (joinCode.trim()){
-            onTripSelected(joinCode.trim().toUpperCase());
+    const handleJoin = () => {
+        if (!joinCode) return;
+        const key = "tripplanr-" + joinCode;
+        if (localStorage.getItem(key)) {
+            onTripSelected(joinCode);
+        } else {
+            alert("Trip not found");
         }
     };
 
-    const handleDeleteTrip =(tripCodeToDelete)=>{
-        const fullkey=`tripplanr-${tripCodeToDelete}`;
-        localStorage.removeItem(fullkey);
+    const filteredTrips = existingTrips.filter(trip =>
+        trip.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-        const active = localStorage.getItem("activeTripCode");
-        if (active===tripCodeToDelete){
-            localStorage.removeItem("activeTripCode");
-        }
-        loadTrips();
-    };
+    return (
+        <div className={styles.container}>
+            <h2 className={styles.header}><FaSuitcase />Trip Selector</h2>
 
-    return(
-        <div style={{padding:"2rem",
-            textAlign:'center',
-        }}>
-            <h2>Start Planning Trip ✈️</h2>
-            <button onClick={handleCreateTrip}>➕Create New Trip</button>
-
-            <div style={{marginTop:"1rem"}}>
+            <div className={styles.searchBar}>
+                <FaSearch className={styles.icon} />
                 <input
-                  type="text"
-                  value={joinCode}
-                  placeholder="Enter Trip Code.."
-                  onChange={(e)=> 
-                    setJoinCode(e.target.value)}
+                    type="text"
+                    placeholder="Search trips.."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button onClick={handleJoinTrip}> 🔑 Join Trip</button>
             </div>
-            {existingTrips.length > 0 &&(
-                <div style={{marginTop:"2rem"}}>
-                    <h3>📁 Existing Trips</h3>
-                    <ul>
-                        {existingTrips.map(({code,name})=>(
-                            <li key={code}>
-                                <button onClick={()=> onTripSelected(code)}>
-                                    ▶ {code}-{name}
-                                </button>
-                                <button onClick={()=>handleDeleteTrip(code)}>
-                                    🗑️Delete 
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+
+            <motion.div layout className={styles.tripGrid}>
+                {filteredTrips.map((trip) => (
+                    <motion.div
+                        key={trip.code}
+                        className={styles.tripCard}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => onTripSelected(trip.code)}
+                    >
+                        <h3>{trip.name}</h3>
+                        <p>Code:{trip.code}</p>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            <div className={styles.actions}>
+                <button onClick={handleCreateTrip} className={styles.createBtn}>
+                    <FaPlus />Create New Trip
+                </button>
+                <div className={styles.joinGroup}>
+                <input
+                        type="text"
+                        placeholder="Enter trip code"
+                        value={joinCode}
+                        onChange={(e) => setJoinCode(e.target.value)}                
+                />
+                    <button onClick={handleJoin}>Join Trip</button>
                 </div>
-            )}
+            </div>
         </div>
     );
 }
-export default TripSelector;
+export default TripSelector;    
