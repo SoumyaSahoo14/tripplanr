@@ -1,68 +1,32 @@
-import React, { useState, useEffect,useContext } from 'react';
-import {Routes, Route} from 'react-router-dom';
-import Home from './pages/Home.jsx';
-import { SuggestionProvider } from './context/SuggestionContext';
-import styles from './App.module.css';
-import TripSelector from "./components/TripSelector";
-import TripHeader from './components/TripHeader.jsx';
-import { ThemeProvider,ThemeContext } from './context/ThemeContext.jsx';
-import themeStyles from './styles/themes.module.css';
-import ThemeToggle from'./components/ThemeToggle.jsx';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import Discover from './pages/Discover';
+import Hotels from './pages/Hotels';
+import ThingsToDo from './pages/ThingsToDo';
+import GroupVoting from './pages/GroupVoting';
+import Restaurants from './pages/Restaurants';
+import Flights from './pages/Flights';
+import BookHostels from './pages/BookHostels';
+import Reviews from './pages/Reviews';
 
+import TripSelector from './components/TripSelector';
+import TripHeader from './components/TripHeader';
+import ThemeToggle from './components/ThemeToggle';
 
-function AppContent() {
-  const [tripCode, setTripCode] = useState(null);
-  const {theme} = useContext(ThemeContext);
+import { ThemeProvider } from './context/ThemeContext';
+import { SuggestionProvider } from './context/SuggestionContext';
 
-  useEffect(() => {
-    const savedTrip = localStorage.getItem("activeTripCode");
-    if (savedTrip) {
-      setTripCode(savedTrip);
-    }
-  }, []);
+import styles from './App.module.css';
+import themeStyles from './styles/themes.module.css';
+import AppContentWrapper from './AppContentWrapper';
 
-
-  useEffect(() => {
-    if (tripCode) {
-      localStorage.setItem("activeTripCode", tripCode);
-    }
-  }, [tripCode]);
-
-  const handleTripSwitch = () => {
-    localStorage.removeItem("activeTripCode");
-    setTripCode(null);
-  };
-
-
+function App() {
   return (
-      <div className={`${themeStyles[theme]} ${styles.container}`}>
-        <ThemeToggle/>
-        
-        {!tripCode ? (
-        <TripSelector onTripSelected={setTripCode} />
-      ) : (
-            <SuggestionProvider tripCode={tripCode}>
-              <TripHeader tripCode={tripCode} onTripSwitch={handleTripSwitch} />
-              <Routes>
-                <Route path="/" element={<Home />} />
-              </Routes>
-            </SuggestionProvider>
-      )}
-
-      </div>
-  );
-}
-
-function App(){
-
-  const toggleTheme=()=>{
-    document.body.classList.toggle("dark-mode");
-  };
-  return(
     <ThemeProvider>
-      <NavBar toggleTheme={toggleTheme}/>
-      <AppContent/>
+      <AppContentWrapper />
     </ThemeProvider>
   );
 }

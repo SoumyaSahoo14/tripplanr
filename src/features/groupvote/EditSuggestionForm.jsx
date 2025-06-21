@@ -1,5 +1,5 @@
 import React,{useState, useContext} from "react";
-import { SuggestionContext } from "../context/SuggestionContext"; 
+import { SuggestionContext } from "../../context/SuggestionContext"; 
 
 
 function EditSuggestionForm({suggestion, onSave}){

@@ -1,6 +1,10 @@
 import React, { useContext, useState } from "react";
 import styles from "../styles/NavBar.module.css";
 import { ThemeContext } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import TripSelector from "./TripSelector";
+
 
 import {
     FaHotel,
@@ -22,6 +26,7 @@ const NavBar = () => {
     const handleLinkClick = () => {
         setMenuOpen(false);
     };
+
 
     return (
         <div className={styles.navbar}>
@@ -89,14 +94,14 @@ const NavBar = () => {
               </button>
 
               <ul className={styles.sidebarMenu}>
-                  <li><a href="#discover" onClick={handleLinkClick}><FaCompass /> Discover</a></li>
-                  <li><a href="#hotels" onClick={handleLinkClick}><FaHotel /> Hotels</a></li>
-                  <li><a href="#things-to-do" onClick={handleLinkClick}><FaTasks /> Things to Do</a></li>
-                  <li><a href="#group-voting" onClick={handleLinkClick}><FaUsers /> Group Voting</a></li>
-                  <li><a href="#restaurants" onClick={handleLinkClick}><FaUtensils /> Restaurants</a></li>
-                  <li><a href="#flights" onClick={handleLinkClick}><FaPlane /> Flights</a></li>
-                  <li><a href="#book-hostels" onClick={handleLinkClick}><FaBed /> Book Hostels</a></li>
-                  <li><a href="#reviews" onClick={handleLinkClick}><FaStar /> Reviews</a></li>
+                  <li><Link to="/discover" className={styles.sidebarButton} onClick={handleLinkClick}><FaCompass />Discover</Link></li>
+                  <li><Link to="/hotels" className={styles.sidebarButton}><FaHotel /> Hotels</Link></li>
+                  <li><Link to="/things-to-do"className={styles.sidebarButton}><FaTasks /> Things to Do</Link></li>
+                  <li><Link to="/groupvote" className={styles.sidebarButton} onClick={handleLinkClick}><FaUsers /> Group Voting</Link></li>
+                  <li><Link to="/restaurants" className={styles.sidebarButton}><FaUtensils /> Restaurants</Link></li>
+                  <li><Link to="/flights" className={styles.sidebarButton}><FaPlane /> Flights</Link></li>
+                  <li><Link to="/book-hostels" className={styles.sidebarButton}><FaBed /> Book Hostels</Link></li>
+                  <li><Link to="/reviews"className={styles.sidebarButton}><FaStar /> Reviews</Link></li>
                   <li>
                       <button onClick={() => { toggleTheme(); setMenuOpen(false); }} className={styles.menuBtn}>
                           {theme === "light" ? "🌙" : "☀️"} Theme

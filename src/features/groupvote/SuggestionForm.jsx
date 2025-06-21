@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { SuggestionContext } from "../context/SuggestionContext";
-import styles from "./SuggestionForm.module.css";
+import { SuggestionContext } from "../../context/SuggestionContext";
+import styles from "../groupvote/styles/SuggestionForm.module.css";
+
 
 const SuggestionForm=()=>{
     const[place,setPlace]= useState('');

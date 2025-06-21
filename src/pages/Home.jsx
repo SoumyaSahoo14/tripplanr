@@ -1,20 +1,14 @@
 import React from "react";
-import SuggestionForm from "../components/SuggestionForm";
-import SuggestionList from "../components/SuggestionList";
-import Itinerary from "../components/Itinerary";
+import SuggestionForm from "../features/groupvote/SuggestionForm";
+import SuggestionList from "../features/groupvote/SuggestionList";
+import Itinerary from "../features/groupvote/Itinerary";
 import VoteButton from "../components/VoteButton";
-import styles from "./Home.module.css";
+import styles from "../features/groupvote/styles/Home.module.css";
 
 const Home = () => {
   return (
     <div style={{ padding: "20px" }}>  
 
-      <div style={{ padding: "60px 20px", textAlign: "center" }}>
-        <h1>Plan a Trip</h1>
-        <SuggestionForm />
-        <SuggestionList />
-        <Itinerary />
-      </div>
       <section id="discover" style={{ padding: "60px 20px", textAlign: "center" }}>
         <h2>🌍 Discover</h2>
         <p>Explore new destinations and ideas for your next trip.</p>

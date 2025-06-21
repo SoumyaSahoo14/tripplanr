@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react";
-import { SuggestionContext } from "../context/SuggestionContext";
-import styles from './Itinerary.module.css';
+import styles from '../groupvote/styles/Itinerary.module.css';
+import {SuggestionContext} from"../../context/SuggestionContext";
 
 const Itinerary=()=>{
     const {suggestions} = useContext(SuggestionContext);

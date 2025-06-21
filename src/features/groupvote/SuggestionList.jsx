@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { SuggestionContext } from "../context/SuggestionContext";
-import VoteButton from './VoteButton';
-import styles from './SuggestionList.module.css';
-import EditSuggestionForm from "./EditSuggestionForm";
+import { SuggestionContext } from "../../context/SuggestionContext";
+import VoteButton from '../../components/VoteButton';
+import styles from '../groupvote/styles/SuggestionList.module.css';
+import EditSuggestionForm from "../groupvote/EditSuggestionForm";
 
 
 const SuggestionList = ({ onEdit})=>{
